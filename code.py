@@ -29,7 +29,7 @@ def main():
 
         # redraws the sprites
         game.render_sprites([ship])
-        game.tick
+        game.tick()
     
 if __name__ == "__main__":
     main()
