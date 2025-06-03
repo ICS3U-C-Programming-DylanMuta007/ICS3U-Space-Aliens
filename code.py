@@ -6,12 +6,12 @@
 import ugame 
 import stage
 
-def main():
+def game_scene():
     # This funtion is the main game
 
     # image banks for circuit python
     background_image = stage.Bank.from_bmp16("space_aliens_background.bmp")
-    sprite_image = stage.Bank/from_bmp16("space_aliens.bmp")
+    sprite_image = stage.Bank.from_bmp16("space_aliens.bmp")
 
     # Set the background to image 0 in the image bank 
     # set size to 10 X 8 tiles of 16 X 16
@@ -32,4 +32,4 @@ def main():
         game.tick()
     
 if __name__ == "__main__":
-    main()
+    game_scene()
