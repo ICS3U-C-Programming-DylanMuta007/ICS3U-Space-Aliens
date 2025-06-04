@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # Created by Dylan Mutabazi
 # Date :June 2025
-# This program holds calculates the surface area and volume of an Octahedr
+# Space aliens in a pybadge
 
 import ugame 
 import stage
+import constant
 
 def game_scene():
     # This funtion is the main game
@@ -15,13 +16,13 @@ def game_scene():
 
     # Set the background to image 0 in the image bank 
     # set size to 10 X 8 tiles of 16 X 16
-    background = stage.Grid(background_image, 10, 8)
+    background = stage.Grid(background_image, constant.SCREEN_GRID_X, constant.SCREEN_GRID_Y)
     
     # A sprite that will updated every frame
-    ship = stage.Sprite(sprite_image, 5, 75, 66)
+    ship = stage.Sprite(sprite_image, 5, 75, constant.SCREEN_Y - (2* constant.SPRITE_SIZE))
 
 
-    game = stage.Stage(ugame.display, 60)
+    game = stage.Stage(ugame.display, constant.FPS)
     game.layers = [ship] + [background]
     game.render_block()
 
@@ -34,21 +35,30 @@ def game_scene():
         keys = ugame.buttons.get_pressed()
         
         if keys & ugame.K_X:
-            print("A")
+            pass
         if keys & ugame.K_O:
-            print("B")
+            pass
         if keys & ugame.K_START:
-            print("Start")
+            pass
         if keys & ugame.K_SELECT:
-            print("Select")
+            pass
         if keys & ugame.K_RIGHT:
-            ship.move(ship.x + 1, ship.y)
+            if ship.x <= constant.SCREEN_X - constant.SPRITE_SIZE:
+                ship.move(ship.x + 1, ship.y)
+            else:
+                ship.move(constant.SCREEN_X - constant.SPRITE_SIZE, ship.y)
+
         if keys & ugame.K_LEFT:
-            ship.move(ship.x - 1, ship.y)
+            if ship.x >= 0:
+                ship.move(ship.x - 1, ship.y)
+            else:
+                ship.move(0, ship.y)
+
+
         if keys & ugame.K_UP:
-            ship.move(ship.x, ship.y - 1)
+            pass
         if keys & ugame.K_DOWN:
-            ship.move(ship.x, ship.y + 1)
+            pass
     
 if __name__ == "__main__":
     game_scene()
